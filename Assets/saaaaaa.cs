@@ -32,14 +32,31 @@ public class saaaaaa : MonoBehaviour
     {
         GroundCheck();
 
-       
+        m_currentInput = Vector2.zero;
+        m_currentInput.x = Input.GetAxis("Horizontal");
 
-     
+        if (m_currentInput != Vector2.zero)
+
+            StartMoving();
+        else
+            StopMoving();
+
+
         if (CanJump() && Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
- 
+
+    }
+    private void StartMoving()
+    {
+        if (m_isMoving) return;
+        m_isMoving = true;
+    }
+    private void StopMoving()
+    {
+        if (!m_isMoving) return;
+        m_isMoving = false;
     }
     private void SetDrag()
     {
