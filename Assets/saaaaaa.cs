@@ -21,28 +21,40 @@ public class saaaaaa : MonoBehaviour
 
     public GameObject anim;
     private Vector2 m_currentInput;
-    private bool m_IsGrounded = false;
+    public bool m_IsGrounded = false;
     public Rigidbody2D Rb { get => m_rb; set => m_rb = value; }
+    private float currentHeight = 0f;
+    private float previousHeight = 0f;
+    void Start()
+    {
 
+    }
     // Update is called once per frame
     private void Update()
     {
         transform.Translate(Vector2.right * m_speed * Time.deltaTime);
         GroundCheck();
+
+        currentHeight = transform.position.y;
+        Debug.Log(currentHeight);
+
         if (m_IsGrounded)
         {
             anim.GetComponent<Animator>().SetTrigger("run");
         }
-        if (CanJump() && Input.GetKeyDown(KeyCode.Space))
+        if ((CanJump() && Input.GetKeyDown(KeyCode.Space)))
         {
             Jump();
-            anim.GetComponent<Animator>().SetTrigger("jump");
-            while (!m_IsGrounded)
-            {
-                anim.GetComponent<Animator>().SetTrigger("fall");
-            }
         }
-
+        if (currentHeight > previousHeight && !m_IsGrounded)
+        {
+            anim.GetComponent<Animator>().SetTrigger("jump");
+        }
+        else if (currentHeight < previousHeight && !m_IsGrounded)
+        {
+            anim.GetComponent<Animator>().SetTrigger("fall");
+        }
+        previousHeight = currentHeight;
     }
     public bool CanJump()
     {

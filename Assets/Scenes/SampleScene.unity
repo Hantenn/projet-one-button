@@ -454,6 +454,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1039112885}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &963854959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4436958818369595792, guid: 367eab3f9290e984692e71998e5f0661,
+    type: 3}
+  m_PrefabInstance: {fileID: 1039112885}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1039112885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -527,6 +533,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_chara
       objectReference: {fileID: 0}
+    - target: {fileID: 1785091841220624606, guid: 367eab3f9290e984692e71998e5f0661,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 963854959}
     - target: {fileID: 1785091841220624606, guid: 367eab3f9290e984692e71998e5f0661,
         type: 3}
       propertyPath: m_jumpForce
