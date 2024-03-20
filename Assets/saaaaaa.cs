@@ -6,10 +6,6 @@ using UnityEngine.Rendering;
 public class saaaaaa : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D m_rb;
-    [SerializeField] private float m_acceleration = 10;
-    [SerializeField] private float m_maxSpeed = 50;
-    [SerializeField] private float m_defaultDrag = 8;
-    [SerializeField] private float m_movementDrag = 0;
     [SerializeField] private float m_speed = 10;
 
 
@@ -18,15 +14,14 @@ public class saaaaaa : MonoBehaviour
 
     [Header("Ground")]
     [SerializeField] private Transform m_groundCheckOrigin;
+    [SerializeField] private GameObject m_groundCheckOrigingameobject;
     [SerializeField] private Vector2 m_groundCheckDir;
     [SerializeField] private LayerMask m_groundLayers;
     [SerializeField] private float m_GroundCheckDistance = 2;
 
     private Vector2 m_currentInput;
     private bool m_IsGrounded = false;
-    private bool m_isMoving = false;
     public Rigidbody2D Rb { get => m_rb; set => m_rb = value; }
-    public float Acceleration { get => m_acceleration; set => m_acceleration = value; }
 
     // Update is called once per frame
     private void Update()
@@ -34,54 +29,18 @@ public class saaaaaa : MonoBehaviour
         transform.Translate(Vector2.right * m_speed * Time.deltaTime);
         GroundCheck();
 
-        m_currentInput = Vector2.zero;
-        m_currentInput.x = Input.GetAxis("Horizontal");
-
-        if (m_currentInput != Vector2.zero)
-
-            StartMoving();
-        else
-            StopMoving();
-
-
         if (CanJump() && Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
 
     }
-    private void StartMoving()
-    {
-        if (m_isMoving) return;
-        m_isMoving = true;
-    }
-    private void StopMoving()
-    {
-        if (!m_isMoving) return;
-        m_isMoving = false;
-    }
-    private void SetDrag()
-    {
-        if (m_IsGrounded)
-        {
-            if (m_isMoving)
-                m_rb.drag = m_movementDrag;
-            else
-                m_rb.drag = m_defaultDrag;
-        }
-        else
-        {
-            m_rb.drag = m_movementDrag;
-        }
-    }
-
-
-    
-
     public bool CanJump()
     {
-        if (!m_IsGrounded) return false;
-        return true;
+        if ((m_IsGrounded) && m_groundCheckOrigingameobject.activeSelf == true) {
+            return true;
+        }
+        return false;
     }
     private void Jump()
     {
@@ -99,7 +58,7 @@ public class saaaaaa : MonoBehaviour
     {
         m_IsGrounded = false;
         RaycastHit2D raycastHit = Physics2D.Raycast(m_groundCheckOrigin.position, m_groundCheckDir, m_GroundCheckDistance, m_groundLayers);
-        if (raycastHit)
+        if (raycastHit) 
         {
           m_IsGrounded = true;
         }
