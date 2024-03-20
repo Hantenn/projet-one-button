@@ -37,7 +37,7 @@ public class saaaaaa : MonoBehaviour
         {
             Jump();
             anim.GetComponent<Animator>().SetTrigger("jump");
-            while (m_IsGrounded)
+            while (!m_IsGrounded)
             {
                 anim.GetComponent<Animator>().SetTrigger("fall");
             }
