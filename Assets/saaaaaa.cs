@@ -19,6 +19,7 @@ public class saaaaaa : MonoBehaviour
     [SerializeField] private LayerMask m_groundLayers;
     [SerializeField] private float m_GroundCheckDistance = 2;
 
+    public GameObject anim;
     private Vector2 m_currentInput;
     private bool m_IsGrounded = false;
     public Rigidbody2D Rb { get => m_rb; set => m_rb = value; }
@@ -28,10 +29,18 @@ public class saaaaaa : MonoBehaviour
     {
         transform.Translate(Vector2.right * m_speed * Time.deltaTime);
         GroundCheck();
-
+        if (m_IsGrounded)
+        {
+            anim.GetComponent<Animator>().SetTrigger("run");
+        }
         if (CanJump() && Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
+            anim.GetComponent<Animator>().SetTrigger("jump");
+            while (m_IsGrounded)
+            {
+                anim.GetComponent<Animator>().SetTrigger("fall");
+            }
         }
 
     }
