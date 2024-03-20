@@ -10,6 +10,7 @@ public class saaaaaa : MonoBehaviour
     [SerializeField] private float m_maxSpeed = 50;
     [SerializeField] private float m_defaultDrag = 8;
     [SerializeField] private float m_movementDrag = 0;
+    [SerializeField] private float m_speed = 10;
 
 
     [Header("Jump")]
@@ -30,6 +31,7 @@ public class saaaaaa : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        transform.Translate(Vector2.right * m_speed * Time.deltaTime);
         GroundCheck();
 
         m_currentInput = Vector2.zero;
