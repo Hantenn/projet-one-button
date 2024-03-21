@@ -25,6 +25,7 @@ public class saaaaaa : MonoBehaviour
     public Rigidbody2D Rb { get => m_rb; set => m_rb = value; }
     private float currentHeight = 0f;
     private float previousHeight = 0f;
+    public AnimationClip anima;
     void Start()
     {
 
@@ -45,8 +46,9 @@ public class saaaaaa : MonoBehaviour
             anim.GetComponent<Animator>().ResetTrigger("fall");
             anim.GetComponent<Animator>().ResetTrigger("attack");
         }
-        if (!m_IsGrounded && Input.GetKeyDown(KeyCode.Space))
+        if ((!m_IsGrounded && Input.GetKeyDown(KeyCode.Space)) || m_groundCheckOrigingameobject.activeSelf == false && Input.GetKeyDown(KeyCode.Space))
         {
+            anim.GetComponent<Animator>().PlayInFixedTime("attack",0,1.2f);
             anim.GetComponent<Animator>().SetTrigger("attack");
             anim.GetComponent<Animator>().ResetTrigger("jump");
             anim.GetComponent<Animator>().ResetTrigger("fall");
