@@ -38,9 +38,19 @@ public class saaaaaa : MonoBehaviour
         currentHeight = transform.position.y;
         Debug.Log(currentHeight);
 
-        if (m_IsGrounded)
+        if (m_IsGrounded && !Input.GetKeyDown(KeyCode.Space))
         {
             anim.GetComponent<Animator>().SetTrigger("run");
+            anim.GetComponent<Animator>().ResetTrigger("jump");
+            anim.GetComponent<Animator>().ResetTrigger("fall");
+            anim.GetComponent<Animator>().ResetTrigger("attack");
+        }
+        if (!m_IsGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.GetComponent<Animator>().SetTrigger("attack");
+            anim.GetComponent<Animator>().ResetTrigger("jump");
+            anim.GetComponent<Animator>().ResetTrigger("fall");
+            anim.GetComponent<Animator>().ResetTrigger("run");
         }
         if ((CanJump() && Input.GetKeyDown(KeyCode.Space)))
         {
@@ -49,12 +59,20 @@ public class saaaaaa : MonoBehaviour
         if (currentHeight > previousHeight && !m_IsGrounded)
         {
             anim.GetComponent<Animator>().SetTrigger("jump");
+            anim.GetComponent<Animator>().ResetTrigger("run");
+            anim.GetComponent<Animator>().ResetTrigger("fall");
+            anim.GetComponent<Animator>().ResetTrigger("attack");
         }
         else if (currentHeight < previousHeight && !m_IsGrounded)
         {
             anim.GetComponent<Animator>().SetTrigger("fall");
+            anim.GetComponent<Animator>().ResetTrigger("jump");
+            anim.GetComponent<Animator>().ResetTrigger("run");
+            anim.GetComponent<Animator>().ResetTrigger("attack");
         }
+
         previousHeight = currentHeight;
+        GroundCheck();
     }
     public bool CanJump()
     {
