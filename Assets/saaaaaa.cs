@@ -19,21 +19,67 @@ public class saaaaaa : MonoBehaviour
     [SerializeField] private LayerMask m_groundLayers;
     [SerializeField] private float m_GroundCheckDistance = 2;
 
+    public GameObject anim;
     private Vector2 m_currentInput;
-    private bool m_IsGrounded = false;
+    public bool m_IsGrounded = false;
     public Rigidbody2D Rb { get => m_rb; set => m_rb = value; }
-
+    private float currentHeight = 0f;
+    private float previousHeight = 0f;
+    public AnimationClip anima;
+    public bool cbon = false;
+    void Start()
+    {
+    }
     // Update is called once per frame
     private void Update()
     {
+       
         transform.Translate(Vector2.right * m_speed * Time.deltaTime);
         GroundCheck();
 
-        if (CanJump() && Input.GetKeyDown(KeyCode.Space))
+        currentHeight = transform.position.y;
+
+        if (m_IsGrounded && !Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.GetComponent<Animator>().SetTrigger("run");
+            anim.GetComponent<Animator>().ResetTrigger("jump");
+            anim.GetComponent<Animator>().ResetTrigger("fall");
+            anim.GetComponent<Animator>().ResetTrigger("attack");
+            cbon = false;
+        }
+        if ((!m_IsGrounded && Input.GetKeyDown(KeyCode.Space)) || m_groundCheckOrigingameobject.activeSelf == false && Input.GetKeyDown(KeyCode.Space))
+        {
+            cbon = true;
+            anim.GetComponent<Animator>().PlayInFixedTime("attack",0,1.2f);
+            anim.GetComponent<Animator>().SetTrigger("attack");
+            anim.GetComponent<Animator>().ResetTrigger("jump");
+            anim.GetComponent<Animator>().ResetTrigger("fall");
+            anim.GetComponent<Animator>().ResetTrigger("run");
+           
+        }
+        if ((CanJump() && Input.GetKeyDown(KeyCode.Space)))
         {
             Jump();
         }
+        if (currentHeight > previousHeight && !m_IsGrounded)
+        {
+            anim.GetComponent<Animator>().SetTrigger("jump");
+            anim.GetComponent<Animator>().ResetTrigger("run");
+            anim.GetComponent<Animator>().ResetTrigger("fall");
+            anim.GetComponent<Animator>().ResetTrigger("attack");
+            cbon = false;
+        }
+        else if (currentHeight < previousHeight && !m_IsGrounded)
+        {
+            anim.GetComponent<Animator>().SetTrigger("fall");
+            anim.GetComponent<Animator>().ResetTrigger("jump");
+            anim.GetComponent<Animator>().ResetTrigger("run");
+            anim.GetComponent<Animator>().ResetTrigger("attack");
+            cbon = false;
+        }
 
+        previousHeight = currentHeight;
+        GroundCheck();
     }
     public bool CanJump()
     {
@@ -61,6 +107,15 @@ public class saaaaaa : MonoBehaviour
         if (raycastHit) 
         {
           m_IsGrounded = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D Collider)
+    {
+        Debug.Log(cbon);
+        if ((Collider.tag == "destroyable"))
+        {
+            Destroy(Collider);
         }
     }
 }
