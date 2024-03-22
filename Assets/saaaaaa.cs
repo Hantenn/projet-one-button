@@ -19,6 +19,7 @@ public class saaaaaa : MonoBehaviour
     [SerializeField] private LayerMask m_groundLayers;
     [SerializeField] private float m_GroundCheckDistance = 2;
 
+    public GameObject colliderr;
     public GameObject anim;
     private Vector2 m_currentInput;
     public bool m_IsGrounded = false;
@@ -33,7 +34,7 @@ public class saaaaaa : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-       
+        colliderr.SetActive(false);
         transform.Translate(Vector2.right * m_speed * Time.deltaTime);
         GroundCheck();
 
@@ -51,6 +52,7 @@ public class saaaaaa : MonoBehaviour
         {
             cbon = true;
             anim.GetComponent<Animator>().PlayInFixedTime("attack",0,1.2f);
+            colliderr.SetActive(true);
             anim.GetComponent<Animator>().SetTrigger("attack");
             anim.GetComponent<Animator>().ResetTrigger("jump");
             anim.GetComponent<Animator>().ResetTrigger("fall");
@@ -110,12 +112,12 @@ public class saaaaaa : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D Collider)
+    private void OnTriggerStay2D(Collider2D collider)
     {
         Debug.Log(cbon);
-        if ((Collider.tag == "destroyable"))
+        if ((collider.tag == "destroyable") && cbon == true)
         {
-            Destroy(Collider);
+            Destroy(collider.gameObject);
         }
     }
 }
