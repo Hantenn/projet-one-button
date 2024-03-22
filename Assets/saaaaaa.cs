@@ -26,18 +26,18 @@ public class saaaaaa : MonoBehaviour
     private float currentHeight = 0f;
     private float previousHeight = 0f;
     public AnimationClip anima;
+    public bool cbon = false;
     void Start()
     {
-
     }
     // Update is called once per frame
     private void Update()
     {
+       
         transform.Translate(Vector2.right * m_speed * Time.deltaTime);
         GroundCheck();
 
         currentHeight = transform.position.y;
-        Debug.Log(currentHeight);
 
         if (m_IsGrounded && !Input.GetKeyDown(KeyCode.Space))
         {
@@ -45,14 +45,17 @@ public class saaaaaa : MonoBehaviour
             anim.GetComponent<Animator>().ResetTrigger("jump");
             anim.GetComponent<Animator>().ResetTrigger("fall");
             anim.GetComponent<Animator>().ResetTrigger("attack");
+            cbon = false;
         }
         if ((!m_IsGrounded && Input.GetKeyDown(KeyCode.Space)) || m_groundCheckOrigingameobject.activeSelf == false && Input.GetKeyDown(KeyCode.Space))
         {
+            cbon = true;
             anim.GetComponent<Animator>().PlayInFixedTime("attack",0,1.2f);
             anim.GetComponent<Animator>().SetTrigger("attack");
             anim.GetComponent<Animator>().ResetTrigger("jump");
             anim.GetComponent<Animator>().ResetTrigger("fall");
             anim.GetComponent<Animator>().ResetTrigger("run");
+           
         }
         if ((CanJump() && Input.GetKeyDown(KeyCode.Space)))
         {
@@ -64,6 +67,7 @@ public class saaaaaa : MonoBehaviour
             anim.GetComponent<Animator>().ResetTrigger("run");
             anim.GetComponent<Animator>().ResetTrigger("fall");
             anim.GetComponent<Animator>().ResetTrigger("attack");
+            cbon = false;
         }
         else if (currentHeight < previousHeight && !m_IsGrounded)
         {
@@ -71,6 +75,7 @@ public class saaaaaa : MonoBehaviour
             anim.GetComponent<Animator>().ResetTrigger("jump");
             anim.GetComponent<Animator>().ResetTrigger("run");
             anim.GetComponent<Animator>().ResetTrigger("attack");
+            cbon = false;
         }
 
         previousHeight = currentHeight;
@@ -102,6 +107,15 @@ public class saaaaaa : MonoBehaviour
         if (raycastHit) 
         {
           m_IsGrounded = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D Collider)
+    {
+        Debug.Log(cbon);
+        if ((Collider.tag == "destroyable"))
+        {
+            Destroy(Collider);
         }
     }
 }
