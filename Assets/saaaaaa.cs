@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class saaaaaa : MonoBehaviour
 {
@@ -118,6 +119,10 @@ public class saaaaaa : MonoBehaviour
         if ((collider.tag == "destroyable") && cbon == true)
         {
             Destroy(collider.gameObject);
+        }
+        else if ((collider.tag == "bomb") && cbon == true)
+        {
+            SceneManager.LoadScene("death");
         }
     }
 }
