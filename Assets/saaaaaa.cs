@@ -27,8 +27,7 @@ public class saaaaaa : MonoBehaviour
     public Rigidbody2D Rb { get => m_rb; set => m_rb = value; }
     private float currentHeight = 0f;
     private float previousHeight = 0f;
-    public AnimationClip anima;
-    public bool cbon = false;
+    private bool cbon = false;
     void Start()
     {
     }
@@ -116,11 +115,11 @@ public class saaaaaa : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collider)
     {
         Debug.Log(cbon);
-        if ((collider.tag == "destroyable") && cbon == true)
+        if ((collider.tag == "destroyable") && cbon == true || (collider.tag == "destroyable") && Input.GetKeyDown(KeyCode.Space))
         {
             Destroy(collider.gameObject);
         }
-        else if ((collider.tag == "bomb") && cbon == true)
+        else if ((collider.tag == "bomb") && cbon == true || (collider.tag == "bomb") && Input.GetKeyDown(KeyCode.Space))
         {
             SceneManager.LoadScene("death");
         }

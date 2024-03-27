@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class DestroyableObject : MonoBehaviour
 {
-    public GameObject player;
-    public Animator anim;
-
-    // Start is called before the first frame update
-    void Start()
+    public GameObject plat;
+    public void Start()
     {
-        
+        plat.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-      Debug.Log(anim.GetCurrentAnimatorStateInfo(0));
+        plat.SetActive(true);
     }
 }
