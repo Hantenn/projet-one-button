@@ -6,13 +6,17 @@ public class DestroyableObject : MonoBehaviour
 {
     public GameObject plat;
     public GameObject detruit;
+    public bool lamort = false; 
     public void Start()
     {
         plat.SetActive(false);
     }
-    private OnTriggerEnter
-    private void OnDestroy()
+    public void Update()
     {
-        plat.SetActive(true);
+        if (lamort == true)
+        {
+            detruit.SetActive(false);
+            plat.SetActive(true);
+        }
     }
 }

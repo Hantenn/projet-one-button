@@ -114,12 +114,11 @@ public class saaaaaa : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-        Debug.Log(cbon);
-        if ((collider.tag == "destroyable") && cbon == true || (collider.tag == "destroyable") && Input.GetKeyDown(KeyCode.Space))
+        if ((collider.tag == "destroyable") && cbon == true)
         {
-            Destroy(collider.gameObject);
+            collider.GetComponent<DestroyableObject>().lamort = true;
         }
-        else if ((collider.tag == "bomb") && cbon == true || (collider.tag == "bomb") && Input.GetKeyDown(KeyCode.Space))
+        else if ((collider.tag == "bomb") && cbon == true)
         {
             SceneManager.LoadScene("death");
         }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - destroyable
   - bomb
+  - death
   layers:
   - Default
   - TransparentFX

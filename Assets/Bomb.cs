@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Bomb : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collider other)
     {
         SceneManager.LoadScene("SampleScene");
     }
