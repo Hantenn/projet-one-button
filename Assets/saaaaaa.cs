@@ -122,5 +122,9 @@ public class saaaaaa : MonoBehaviour
         {
             SceneManager.LoadScene("death");
         }
+        else if (collider.tag == "death")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
