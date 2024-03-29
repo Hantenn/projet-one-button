@@ -28,8 +28,10 @@ public class saaaaaa : MonoBehaviour
     private float currentHeight = 0f;
     private float previousHeight = 0f;
     private bool cbon = false;
+    private Coroutine aaa;
     void Start()
     {
+        aaa = StartCoroutine(Jsp());
     }
     // Update is called once per frame
     private void Update()
@@ -50,6 +52,8 @@ public class saaaaaa : MonoBehaviour
         }
         if ((!m_IsGrounded && Input.GetKeyDown(KeyCode.Space)) || m_groundCheckOrigingameobject.activeSelf == false && Input.GetKeyDown(KeyCode.Space))
         {
+            StopCoroutine(aaa);
+            
             cbon = true;
             anim.GetComponent<Animator>().PlayInFixedTime("attack",0,1.2f);
             colliderr.SetActive(true);
@@ -57,6 +61,8 @@ public class saaaaaa : MonoBehaviour
             anim.GetComponent<Animator>().ResetTrigger("jump");
             anim.GetComponent<Animator>().ResetTrigger("fall");
             anim.GetComponent<Animator>().ResetTrigger("run");
+            aaa = StartCoroutine(Jsp());
+
            
         }
         if ((CanJump() && Input.GetKeyDown(KeyCode.Space)))
@@ -127,5 +133,10 @@ public class saaaaaa : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    IEnumerator Jsp()
+    {
+        yield return new WaitForSeconds(0.5f);
     }
 }

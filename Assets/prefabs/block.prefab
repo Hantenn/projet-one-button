@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plat: {fileID: 0}
   detruit: {fileID: 7218376495706597964}
+  objet: {fileID: 2625966644224535016}
   lamort: 0
 --- !u!61 &7777548348266600666
 BoxCollider2D:

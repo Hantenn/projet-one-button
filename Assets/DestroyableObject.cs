@@ -6,6 +6,7 @@ public class DestroyableObject : MonoBehaviour
 {
     public GameObject plat;
     public GameObject detruit;
+    public GameObject objet;
     public bool lamort = false; 
     public void Start()
     {
@@ -17,6 +18,7 @@ public class DestroyableObject : MonoBehaviour
         {
             detruit.SetActive(false);
             plat.SetActive(true);
+            objet.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }
