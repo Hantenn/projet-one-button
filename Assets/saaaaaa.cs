@@ -36,7 +36,6 @@ public class saaaaaa : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        colliderr.SetActive(false);
         transform.Translate(Vector2.right * m_speed * Time.deltaTime);
         GroundCheck();
 
@@ -137,6 +136,7 @@ public class saaaaaa : MonoBehaviour
 
     IEnumerator Jsp()
     {
+        colliderr.SetActive(false);
         yield return new WaitForSeconds(0.5f);
     }
 }
