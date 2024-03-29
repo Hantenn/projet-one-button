@@ -117,6 +117,7 @@ public class saaaaaa : MonoBehaviour
         if ((collider.tag == "destroyable") && cbon == true)
         {
             collider.GetComponent<DestroyableObject>().lamort = true;
+            Debug.Log(collider.GetComponent<DestroyableObject>().lamort);
         }
         else if ((collider.tag == "bomb") && cbon == true)
         {
