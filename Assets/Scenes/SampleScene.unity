@@ -2411,6 +2411,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8943393869384002944, guid: db451e0f5fbea384ca811e050c3ef231, type: 3}
+      propertyPath: m_TagString
+      value: destroyable
+      objectReference: {fileID: 0}
     - target: {fileID: 8959048950108219836, guid: db451e0f5fbea384ca811e050c3ef231, type: 3}
       propertyPath: m_RootOrder
       value: 0
