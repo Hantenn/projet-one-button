@@ -27,11 +27,10 @@ public class saaaaaa : MonoBehaviour
     public Rigidbody2D Rb { get => m_rb; set => m_rb = value; }
     private float currentHeight = 0f;
     private float previousHeight = 0f;
-    private bool cbon = false;
-    private Coroutine aaa;
+    public bool cbon = false;
+
     void Start()
     {
-        aaa = StartCoroutine(Jsp());
     }
     // Update is called once per frame
     private void Update()
@@ -51,16 +50,16 @@ public class saaaaaa : MonoBehaviour
         }
         if ((!m_IsGrounded && Input.GetKeyDown(KeyCode.Space)) || m_groundCheckOrigingameobject.activeSelf == false && Input.GetKeyDown(KeyCode.Space))
         {
-            StopCoroutine(aaa);
+
             
             cbon = true;
             anim.GetComponent<Animator>().PlayInFixedTime("attack",0,1.2f);
-            colliderr.SetActive(true);
+ 
             anim.GetComponent<Animator>().SetTrigger("attack");
             anim.GetComponent<Animator>().ResetTrigger("jump");
             anim.GetComponent<Animator>().ResetTrigger("fall");
             anim.GetComponent<Animator>().ResetTrigger("run");
-            aaa = StartCoroutine(Jsp());
+
 
            
         }
@@ -134,9 +133,4 @@ public class saaaaaa : MonoBehaviour
         }
     }
 
-    IEnumerator Jsp()
-    {
-        colliderr.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-    }
 }

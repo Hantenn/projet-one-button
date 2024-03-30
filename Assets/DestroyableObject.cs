@@ -7,7 +7,6 @@ public class DestroyableObject : MonoBehaviour
     public GameObject plat;
     public GameObject detruit;
     public GameObject objet;
-    public GameObject orig;
     public bool lamort = false; 
     public void Start()
     {
@@ -22,10 +21,4 @@ public class DestroyableObject : MonoBehaviour
             objet.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
-    private void OnTriggerStay2D(Collider2D collider)
-    {
-        if ((collider.tag == "destroyable") && orig.GetComponent<saaaaaa>().cbon == true)
-        {
-            lamort = true;
-        }
-    }
+}
