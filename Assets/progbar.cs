@@ -17,8 +17,7 @@ public class progbar : MonoBehaviour
     }
 
     void Update()
-    {
-        if 
+    { 
         if (progressBar.fillAmount < 1)
         {
             progressBar.fillAmount = playerGO.transform.position.x / maxDistance;
