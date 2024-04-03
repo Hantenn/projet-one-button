@@ -20,13 +20,5 @@ public class collider : MonoBehaviour
             collider.GetComponent<DestroyableObject>().lamort = true;
             Debug.Log(collider.GetComponent<DestroyableObject>().lamort);
         }
-        else if ((collider.tag == "bomb") && origine.GetComponent<saaaaaa>().cbon == true)
-        {
-            SceneManager.LoadScene("death");
-        }
-        else if (collider.tag == "death")
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
     }
 }
