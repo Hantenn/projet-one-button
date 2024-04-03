@@ -10,7 +10,13 @@ public class Bomb : MonoBehaviour
     public GameObject son;
     public bool reset = false;
     public AudioSource musique;
+    public AudioSource musique2;
     public GameObject Checkpointa;
+    public GameObject Checkpointb;
+    public AudioSource musique3;
+    public AudioSource musique4;
+    public GameObject Checkpointc;
+    public GameObject Checkpointd;
     public void Start()
     {
         _respawnPoint = player.transform.position;
@@ -38,6 +44,33 @@ public class Bomb : MonoBehaviour
         {
             musique.Play();
             son.GetComponent<AudioSource>().Stop();
+            musique2.Stop();
+            musique3.Stop();
+            musique4.Stop();
+        }
+        else if (Checkpointb.GetComponent<Checkpoint>().musiqueact == true)
+        {
+            musique2.Play();
+            son.GetComponent<AudioSource>().Stop();
+            musique.Stop();
+            musique3.Stop();
+            musique4.Stop();
+        }
+        else if (Checkpointc.GetComponent<Checkpoint>().musiqueact == true)
+        {
+            musique3.Play();
+            son.GetComponent<AudioSource>().Stop();
+            musique.Stop();
+            musique2.Stop();
+            musique4.Stop();
+        }
+        else if (Checkpointd.GetComponent<Checkpoint>().musiqueact == true)
+        {
+            musique4.Play();
+            son.GetComponent<AudioSource>().Stop();
+            musique.Stop();
+            musique3.Stop();
+            musique2.Stop();
         }
         else
         {

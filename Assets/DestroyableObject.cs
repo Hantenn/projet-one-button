@@ -9,6 +9,7 @@ public class DestroyableObject : MonoBehaviour
     public GameObject objet;
     public bool lamort = false;
     public GameObject reset;
+    public float score = 0;
     public void Start()
     {
         plat.SetActive(false);
@@ -20,6 +21,7 @@ public class DestroyableObject : MonoBehaviour
             detruit.SetActive(false);
             plat.SetActive(true);
             objet.GetComponent<BoxCollider2D>().enabled = false;
+            score = score + 1;
         }
         if (reset.GetComponent<Bomb>().reset == true)
         {
