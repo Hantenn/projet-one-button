@@ -50,6 +50,8 @@ MonoBehaviour:
   detruit: {fileID: 7218376495706597964}
   objet: {fileID: 2625966644224535016}
   lamort: 0
+  reset: {fileID: 0}
+  particule: {fileID: 4340815943520729521}
 --- !u!61 &7777548348266600666
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -158,6 +160,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e1fea5dad10b6b45abb0129ec926b78, type: 3}
+--- !u!198 &4340815943520729521 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4780877721457860703, guid: 0e1fea5dad10b6b45abb0129ec926b78, type: 3}
+  m_PrefabInstance: {fileID: 9107610981671148014}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7218376495706597964 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1893878828483900322, guid: 0e1fea5dad10b6b45abb0129ec926b78, type: 3}

@@ -9,7 +9,8 @@ public class DestroyableObject : MonoBehaviour
     public GameObject objet;
     public bool lamort = false;
     public GameObject reset;
-    public float score = 0;
+    public ParticleSystem particule;
+    public bool particuleoui = true;
     public void Start()
     {
         plat.SetActive(false);
@@ -18,17 +19,23 @@ public class DestroyableObject : MonoBehaviour
     {
         if (lamort == true)
         {
-            detruit.SetActive(false);
+            detruit.GetComponent<SpriteRenderer>().enabled = false;
             plat.SetActive(true);
-            objet.GetComponent<BoxCollider2D>().enabled = false;
-            score = score + 1;
+            objet.GetComponent<BoxCollider2D>().enabled = false;        
+            if (particuleoui == true)
+            {
+                Debug.Log("marche");
+                particule.Play();
+                particuleoui = false;
+            }
         }
         if (reset.GetComponent<Bomb>().reset == true)
         {
             lamort = false;
-            detruit.SetActive(true);
+            detruit.GetComponent<SpriteRenderer>().enabled = true;
             plat.SetActive(false);
             objet.GetComponent<BoxCollider2D>().enabled = true;
+            particuleoui = true;
         }
 
     }

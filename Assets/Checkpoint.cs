@@ -16,6 +16,6 @@ public class Checkpoint : MonoBehaviour
             GameManager.GetComponent<Bomb>()._respawnPoint = pointupdate;
             musiqueact = true;
             Debug.Log(musiqueact);
-}
+        }
     }
 }
