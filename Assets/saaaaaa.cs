@@ -123,7 +123,7 @@ public class saaaaaa : MonoBehaviour
     {
         if ((collider.tag == "destroyable") && cbon == true)
         {
-            collider.GetComponent<Destroy>().lamort = true;
+            collider.GetComponent<DestroyableObject>().lamort = true;
         }
 
     }
