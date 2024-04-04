@@ -31,5 +31,7 @@ public class mortel : MonoBehaviour
     {
         player.transform.position = _respawnPoint;
         reset = true;
+        son.GetComponent<AudioSource>().Stop();
+        son.GetComponent<AudioSource>().Play();
     }
 }
