@@ -11,6 +11,8 @@ public class DestroyableObject : MonoBehaviour
     public GameObject reset;
     public ParticleSystem particule;
     public bool particuleoui = true;
+    public AudioSource Slash;
+    public AudioSource SlashDestroy;
     public void Start()
     {
         plat.SetActive(false);
@@ -27,6 +29,8 @@ public class DestroyableObject : MonoBehaviour
                 Debug.Log("marche");
                 particule.Play();
                 particuleoui = false;
+                Slash.Stop();
+                SlashDestroy.Play();
             }
         }
         if (reset.GetComponent<Bomb>().reset == true)

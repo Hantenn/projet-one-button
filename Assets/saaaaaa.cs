@@ -28,6 +28,7 @@ public class saaaaaa : MonoBehaviour
     private float currentHeight = 0f;
     private float previousHeight = 0f;
     public bool cbon = false;
+    public AudioSource slash;
 
     void Start()
     {
@@ -59,6 +60,8 @@ public class saaaaaa : MonoBehaviour
             anim.GetComponent<Animator>().ResetTrigger("jump");
             anim.GetComponent<Animator>().ResetTrigger("fall");
             anim.GetComponent<Animator>().ResetTrigger("run");
+            slash.Stop();
+            slash.Play();
 
 
            

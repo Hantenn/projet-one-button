@@ -42,36 +42,40 @@ public class Bomb : MonoBehaviour
         reset = true;
         if (Checkpointa.GetComponent<Checkpoint>().musiqueact == true)
         {
+            son.GetComponent<AudioSource>().Stop();
             musique.enabled = true;
             musique.Play();
-            son.GetComponent<AudioSource>().Stop();
             Checkpointa.GetComponent<Checkpoint>().musiqueact = false;
         }
         if (Checkpointb.GetComponent<Checkpoint>().musiqueact == true)
         {
-            musique2.enabled = true;
-            musique2.Play();
             son.GetComponent<AudioSource>().Stop();
             musique.Stop();
             musique.enabled = false;
+            musique2.enabled = true;
+            musique2.Play();
+  
+            
             Checkpointb.GetComponent<Checkpoint>().musiqueact = false;
         }
         if (Checkpointc.GetComponent<Checkpoint>().musiqueact == true)
         {
-            musique3.enabled = true;
-            musique3.Play();
             son.GetComponent<AudioSource>().Stop();
             musique2.Stop();
             musique2.enabled = false;
+            musique3.enabled = true;
+            musique3.Play();
+
             Checkpointc.GetComponent<Checkpoint>().musiqueact = false;
         }
         if (Checkpointd.GetComponent<Checkpoint>().musiqueact == true)
         {
-            musique4.Play();
-            musique4.enabled = true;
             son.GetComponent<AudioSource>().Stop();
             musique3.Stop();
             musique3.enabled = false;
+            musique4.Play();
+            musique4.enabled = true;
+
             Checkpointd.GetComponent<Checkpoint>().musiqueact = false;
         }
         else
