@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Bomb : MonoBehaviour
 {
     public Vector2 _respawnPoint;
+    public Vector2 _respawnPointOrig;
     public GameObject player;
     public GameObject son;
     public bool reset = false;
@@ -20,6 +21,7 @@ public class Bomb : MonoBehaviour
     public void Start()
     {
         _respawnPoint = player.transform.position;
+        _respawnPointOrig = player.transform.position;
         reset = false;
     }
     public void Update()
@@ -36,10 +38,18 @@ public class Bomb : MonoBehaviour
             OnPlayerDeath();
         }
     }
+    void Retard()
+    {
+        reset = false;
+    }
     public void OnPlayerDeath()
     {
         player.transform.position = _respawnPoint;
         reset = true;
+        if (_respawnPoint == _respawnPointOrig)
+        {
+            son.GetComponent<AudioSource>().Play();
+        }
         if (Checkpointa.GetComponent<Checkpoint>().musiqueact == true)
         {
             son.GetComponent<AudioSource>().Stop();
@@ -77,10 +87,6 @@ public class Bomb : MonoBehaviour
             musique4.enabled = true;
 
             Checkpointd.GetComponent<Checkpoint>().musiqueact = false;
-        }
-        else
-        {
-            son.GetComponent<AudioSource>().Play();
         }
     }
 }

@@ -2109,6 +2109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: 0, y: 0}
+  _respawnPointOrig: {x: 0, y: 0}
   player: {fileID: 59302641}
   son: {fileID: 1144636882}
   reset: 0
@@ -15261,6 +15262,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.30186284
       objectReference: {fileID: 0}
+    - target: {fileID: 6243980753447495801, guid: db451e0f5fbea384ca811e050c3ef231, type: 3}
+      propertyPath: deces
+      value: 
+      objectReference: {fileID: 368808124}
     - target: {fileID: 6243980753447495801, guid: db451e0f5fbea384ca811e050c3ef231, type: 3}
       propertyPath: slash
       value: 

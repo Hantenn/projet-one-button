@@ -29,6 +29,7 @@ public class saaaaaa : MonoBehaviour
     private float previousHeight = 0f;
     public bool cbon = false;
     public AudioSource slash;
+    public GameObject deces;
 
     void Start()
     {
@@ -62,8 +63,6 @@ public class saaaaaa : MonoBehaviour
             anim.GetComponent<Animator>().ResetTrigger("run");
             slash.Stop();
             slash.Play();
-
-
            
         }
         if ((CanJump() && Input.GetKeyDown(KeyCode.Space)))
@@ -85,6 +84,11 @@ public class saaaaaa : MonoBehaviour
             anim.GetComponent<Animator>().ResetTrigger("run");
             anim.GetComponent<Animator>().ResetTrigger("attack");
             cbon = false;
+        }
+        if (deces.GetComponent<Bomb>().reset == true)
+        {
+            cbon = false;
+            
         }
 
         previousHeight = currentHeight;
@@ -124,8 +128,7 @@ public class saaaaaa : MonoBehaviour
         if ((collider.tag == "destroyable") && cbon == true)
         {
             collider.GetComponent<DestroyableObject>().lamort = true;
-        }
-
+        } 
     }
 
 }

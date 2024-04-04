@@ -19,6 +19,12 @@ public class DestroyableObject : MonoBehaviour
     }
     public void Update()
     {
+        if (reset.GetComponent<Bomb>().reset == true)
+        {
+            lamort = false;
+            Debug.Log(lamort);
+        }
+
         if (lamort == true)
         {
             detruit.GetComponent<SpriteRenderer>().enabled = false;
@@ -32,15 +38,16 @@ public class DestroyableObject : MonoBehaviour
                 Slash.Stop();
                 SlashDestroy.Play();
             }
-        }
-        if (reset.GetComponent<Bomb>().reset == true)
-        {
-            lamort = false;
-            detruit.GetComponent<SpriteRenderer>().enabled = true;
-            plat.SetActive(false);
-            objet.GetComponent<BoxCollider2D>().enabled = true;
-            particuleoui = true;
+            Invoke("test", 3);
         }
 
+    }
+    void test()
+    {
+        lamort = false;
+        detruit.GetComponent<SpriteRenderer>().enabled = true;
+        plat.SetActive(false);
+        objet.GetComponent<BoxCollider2D>().enabled = true;
+        particuleoui = true;
     }
 }
