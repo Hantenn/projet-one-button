@@ -38,7 +38,7 @@ public class DestroyableObject : MonoBehaviour
                 Slash.Stop();
                 SlashDestroy.Play();
             }
-            Invoke("test", 3);
+            Invoke("test", 4);
         }
 
     }

@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b2e15696e3f6d41b4c809731acade3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rb: {fileID: 0}
+  m_rb: {fileID: 162571941}
   m_speed: 24
   m_jumpForce: 12.2
   m_groundCheckOrigin: {fileID: 312077893}
@@ -781,6 +781,11 @@ MonoBehaviour:
   m_IsGrounded: 0
   cbon: 0
   slash: {fileID: 162571935}
+--- !u!50 &162571941 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 4090900091222753490, guid: db451e0f5fbea384ca811e050c3ef231, type: 3}
+  m_PrefabInstance: {fileID: 413502450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &179733171
 PrefabInstance:
   m_ObjectHideFlags: 0
